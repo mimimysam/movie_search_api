@@ -8,19 +8,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  padding-bottom: 50px;
 }
 
 .search-bar {
   width: 50%;
   border: none;
   padding: 10px;
-}
-
-.search-btn {
-  background: aliceblue;
-  border: none;
-  padding: 10px 20px;
-  color: black;
+  width: 55%;
+	padding: 16px;
+  font-size: 36px;
+  font-style: italic;
 }
 
 .movies {
@@ -30,5 +29,21 @@
 }
 
 img {
-  max-height: 200px;
+  max-height: 300px;
+}
+
+.heading {
+	font-size: 40px;
+	color: rgb(226, 226, 226);
+  text-align: center;
+  padding-top: 100px;
+  margin-top: 0;
+}
+
+.search-icon {
+	position: relative;
+	top: -10px;
+	font-size: 30px;
+	color: #555;
+	right: 40px;
 }

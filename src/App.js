@@ -3,11 +3,10 @@ import Movie from './Movie';
 import './App.css';
 
 const App = () => {
-  // const API_KEY = "k_2d527d6t";
 
   const [results, setResults] = useState([]);
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('Tenet');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     getResults();
@@ -30,22 +29,33 @@ const App = () => {
     setSearch('');
   }
 
+  const renderResults = e => {
+    if (! results) {
+      return null;
+    } else {
+      return (
+        <div className="movies">
+          {results.map(result => (
+            <Movie
+              key={result.id} 
+              title={result.title} 
+              image={result.image} 
+              year={result.description}
+            />
+          ))}
+        </div>
+      )
+    }
+  }
+
   return(
     <div className="App">
+      <h2 className="heading">Rate Movies: The Application</h2>
       <form onSubmit={getSearch} className="search-form">
         <input className="search-bar" type="text" value={search} onChange={updateSearch} />
-        <button className="search-btn" type="submit">Search</button>
+        <i className="fa fa-search search-icon" aria-hidden="true"/>
       </form>
-      <div className="movies">
-      {results.map(result => (
-        <Movie
-          key={result.title} 
-          title={result.title} 
-          image={result.image} 
-          year={result.description}
-        />
-      ))}
-      </div>
+        {renderResults()}
     </div>
   );
 }

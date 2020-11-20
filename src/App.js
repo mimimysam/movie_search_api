@@ -37,6 +37,7 @@ const App = () => {
         <div className="movies">
           {results.map(result => (
             <Movie
+              id={result.id}
               key={result.id} 
               title={result.title} 
               image={result.image} 

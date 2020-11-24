@@ -13,10 +13,10 @@ const App = () => {
   }, [query]);
 
   const getResults = async () => {
-    const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/k_2d527d6t/${query}`);
+    const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/k_yd297has/${query}`);
     const data = await response.json();
     setResults(data.results);
-    console.log(data.results);
+    console.log(data);
   }
 
   const updateSearch = e => {

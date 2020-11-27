@@ -7,34 +7,51 @@ import useModal from './Component/useModal';
 const Movie = ({id, title, image, year}) => {
 
     const {isShowing, toggle} = useModal();
-    const [description, setDescription] = useState([]);
+    const [description, setDescription] = useState({});
+    const [ratings, setRatings] = useState({id,
+        title,
+        thumbsUpCount: 0,
+        thumbsDownCount: 0});
 
     const getDescription = async () => {
-        const response = await fetch(`https://imdb-api.com/en/API/Title/k_2d527d6t/${id}/directors,plot`);
+        checkVoted()
+        const response = await fetch(`https://imdb-api.com/en/API/Title/k_yd297has/${id}/directors,plot`);
         const data = await response.json();
         setDescription(data);
-        console.log(data);
-        console.log(data.stars);
         toggle()
       }
+
+    const checkVoted = () => {
+        const retrieved = localStorage.getItem(id);
+        if (retrieved !== null) {
+            const votes = JSON.parse(retrieved);
+            setRatings(votes)
+        } console.log(ratings)
+    }
 
     return (
         <div className={style.movie}>
             <h1>{title}</h1>
-            <img src={image} alt="" onClick={getDescription}/>
+            <div className={style.container}>
+                <img className={style.image} src={image} alt="movie poster" onClick={getDescription}/>
+            </div>
             <h3>{year}</h3>
-            {/* <button className="button-default" onClick={toggle}>Show Modal</button> */}
             <Modal
                 isShowing={isShowing}
                 hide={toggle}
+                id={id}
                 title={title}
                 year={year}
+                image={image}
                 directors={description.directors} 
                 stars={description.stars}
-                plot={description.plot} 
+                plot={description.plot}
+                thumbsUpCount={ratings.thumbsUpCount}
+                thumbsDownCount={ratings.thumbsDownCount}
             />
         </div>
     );
 }
 
 export default Movie;
+

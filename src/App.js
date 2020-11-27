@@ -53,8 +53,8 @@ const App = () => {
     <div className="App">
       <h2 className="heading">Rate Movies: The Application</h2>
       <form onSubmit={getSearch} className="search-form">
-        <input className="search-bar" type="text" value={search} onChange={updateSearch} />
-        <i className="fa fa-search search-icon" aria-hidden="true"/>
+        <input className="search-bar" type="text" placeholder="Enter a movie to search..." value={search} onChange={updateSearch} />
+        <i className="fa fa-search fa-2x" />
       </form>
         {renderResults()}
     </div>

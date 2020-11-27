@@ -40,10 +40,8 @@ img {
   margin-top: 0;
 }
 
-.search-icon {
+.fa-search {
 	position: relative;
-	top: -10px;
-	font-size: 30px;
 	color: #555;
 	right: 40px;
 }
@@ -111,6 +109,47 @@ button {
 }
 
 .button-default {
-  background: #247BA0;
   color: #fff;
+}
+
+.fa-thumbs-up {
+  cursor: pointer;
+}
+
+.fa-thumbs-down {
+  cursor: pointer
+}
+
+.thumbs-up{
+  background-color: #8df5c1;
+  border-radius: 10px;
+  width: 70px;
+  cursor: pointer;
+  align-items: center;
+
+}
+
+.thumbs-down{
+  background-color: #ff9191;
+  border-radius: 10px;
+  width: 70px;
+  cursor: pointer;
+  align-items: center;
+
+}
+
+table{
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumb-rating{
+  justify-content: center;
+  align-items: center;
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  margin: auto;
+  text-align: center;
+  padding-top: 10px;
 }

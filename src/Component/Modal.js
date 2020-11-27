@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ThumbRating from './ThumbRating';
 
-const Modal = ({ isShowing, hide, title, year, directors, stars, plot }) => isShowing ? ReactDOM.createPortal(
+const Modal = ({ isShowing, hide, id, title, year, image, directors, stars, plot, thumbsUpCount, thumbsDownCount }) => isShowing ? ReactDOM.createPortal(
+
   <React.Fragment>
     <div className="modal-overlay"/>
     <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -16,9 +18,16 @@ const Modal = ({ isShowing, hide, title, year, directors, stars, plot }) => isSh
           <p>Directors: {directors}</p>
           <p>Cast: {stars}</p>
           <p>Plot: {plot}</p>
+          <ThumbRating 
+            id={id}
+            title={title}
+            image={image}
+            thumbsUpCount={thumbsUpCount}
+            thumbsDownCount={thumbsDownCount} />
       </div>
     </div>
   </React.Fragment>, document.body
+  
 ) : null;
 
 export default Modal;

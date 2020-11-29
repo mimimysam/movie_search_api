@@ -26,7 +26,7 @@ const Movie = ({id, title, image, year}) => {
         if (retrieved !== null) {
             const votes = JSON.parse(retrieved);
             setRatings(votes)
-        } console.log(ratings)
+        }
     }
 
     return (

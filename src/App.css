@@ -1,6 +1,9 @@
 .App {
   min-height: 100vh;
   background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .search-form {
@@ -44,11 +47,6 @@ img {
 	position: relative;
 	color: #555;
 	right: 40px;
-}
-
-.App {
-  text-align: center;
-  padding-top: 2rem;
 }
 
 .modal-overlay {

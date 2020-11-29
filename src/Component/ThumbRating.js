@@ -5,13 +5,6 @@ const ThumbRating = ( {id, title, image, thumbsUpCount, thumbsDownCount} ) => {
     const [upVotes, setUpVotes] = useState(thumbsUpCount);
     const [downVotes, setDownVotes] = useState(thumbsDownCount);
 
-    const obj = {
-        id,
-        title,
-        thumbsUpCount: thumbsUpCount,
-        thumbsDownCount: thumbsDownCount
-    }
-
     const addThumbsUp = () => {
         setUpVotes(upVotes +1)
         const rating = {

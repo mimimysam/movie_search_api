@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Movie from './Movie';
+import RatingsTable from './RatingsTable'
 import './App.css';
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
   const [results, setResults] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('');
+  const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
     getResults();
@@ -17,6 +19,7 @@ const App = () => {
     const data = await response.json();
     setResults(data.results);
     console.log(data);
+    getRatings()
   }
 
   const updateSearch = e => {
@@ -27,6 +30,16 @@ const App = () => {
     e.preventDefault();
     setQuery(search);
     setSearch('');
+  }
+
+  const getRatings = () => {
+    const ratingsArray = [];
+    for (var i = 0; i < localStorage.length; i++){
+      const rating = (JSON.parse(localStorage.getItem(localStorage.key(i))));
+      ratingsArray.push(rating);
+    }
+      console.log(ratingsArray)
+      setRatings(ratingsArray)
   }
 
   const renderResults = e => {
@@ -49,6 +62,25 @@ const App = () => {
     }
   }
 
+  const renderRatings = e => {
+    if (! ratings) {
+      return null;
+    } else {
+      return (
+        <div>
+          {ratings.map(rating => (
+            <RatingsTable 
+              id={rating.id}
+              key={rating.id}
+              title={rating.title}
+              thumbsup={rating.thumbsUpCount}
+              thumbsdown={rating.thumbsDownCount}/>
+              ))}
+        </div>
+      )
+    }
+  }
+
   return(
     <div className="App">
       <h2 className="heading">Rate Movies: The Application</h2>
@@ -57,6 +89,7 @@ const App = () => {
         <i className="fa fa-search fa-2x" />
       </form>
         {renderResults()}
+        {renderRatings()}
     </div>
   );
 }

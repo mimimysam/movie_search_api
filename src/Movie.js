@@ -15,7 +15,7 @@ const Movie = ({id, title, image, year}) => {
 
     const getDescription = async () => {
         checkVoted()
-        const response = await fetch(`https://imdb-api.com/en/API/Title/k_yd297has/${id}/directors,plot`);
+        const response = await fetch(`https://imdb-api.com/en/API/Title/k_2d527d6t/${id}/directors,plot`);
         const data = await response.json();
         setDescription(data);
         toggle()

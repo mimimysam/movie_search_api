@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Movie from './Movie';
-import RatingsTable from './RatingsTable'
+import RatingsList from './RatingsList'
 import './App.css';
 
 const App = () => {
@@ -11,16 +11,8 @@ const App = () => {
   const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
-    getResults();
+    getResults(); getRatings();
   }, [query]);
-
-  const getResults = async () => {
-    const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/k_yd297has/${query}`);
-    const data = await response.json();
-    setResults(data.results);
-    console.log(data);
-    getRatings()
-  }
 
   const updateSearch = e => {
     setSearch(e.target.value);
@@ -32,13 +24,18 @@ const App = () => {
     setSearch('');
   }
 
+  const getResults = async () => {
+    const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/k_2d527d6t/${query}`);
+    const data = await response.json();
+    setResults(data.results);
+  }
+
   const getRatings = () => {
     const ratingsArray = [];
     for (var i = 0; i < localStorage.length; i++){
       const rating = (JSON.parse(localStorage.getItem(localStorage.key(i))));
       ratingsArray.push(rating);
     }
-      console.log(ratingsArray)
       setRatings(ratingsArray)
   }
 
@@ -69,13 +66,14 @@ const App = () => {
       return (
         <div>
           {ratings.map(rating => (
-            <RatingsTable 
+            <RatingsList 
               id={rating.id}
               key={rating.id}
               title={rating.title}
               thumbsup={rating.thumbsUpCount}
-              thumbsdown={rating.thumbsDownCount}/>
-              ))}
+              thumbsdown={rating.thumbsDownCount}
+            />
+          ))}
         </div>
       )
     }
@@ -83,7 +81,9 @@ const App = () => {
 
   return(
     <div className="App">
-      <h2 className="heading">Rate Movies: The Application</h2>
+      <div className="heading">
+        <h2 className="heading-text" onClick={() => window.location.reload(false)}>Rate Movies: The Application</h2>
+        </div>
       <form onSubmit={getSearch} className="search-form">
         <input className="search-bar" type="text" placeholder="Enter a movie to search..." value={search} onChange={updateSearch} />
         <i className="fa fa-search fa-2x" />

@@ -36,11 +36,19 @@ img {
 }
 
 .heading {
-	font-size: 40px;
-	color: rgb(226, 226, 226);
-  text-align: center;
   padding-top: 100px;
   margin-top: 0;
+}
+
+.heading-text {
+  font-size: 44px;
+	color: rgb(226, 226, 226);
+  text-align: center;
+  cursor: pointer;
+}
+
+.heading-text:hover{
+  text-decoration: underline;
 }
 
 .fa-search {
@@ -150,4 +158,16 @@ table{
   margin: auto;
   text-align: center;
   padding-top: 10px;
+}
+
+.reset-link {
+  padding-top: 0px;
+  margin: 0px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.reset-link:hover{
+  text-decoration: underline;
+  color: darkred;
 }

@@ -28,6 +28,12 @@ const ThumbRating = ( {id, title, image, thumbsUpCount, thumbsDownCount} ) => {
         const stringified = JSON.stringify(rating);
         localStorage.setItem(id, stringified);
     }
+
+    const resetLink = () => {
+        localStorage.removeItem(id);
+        setUpVotes(0);
+        setDownVotes(0);
+    }
     
 
     return (
@@ -62,6 +68,7 @@ const ThumbRating = ( {id, title, image, thumbsUpCount, thumbsDownCount} ) => {
                 </tr>
             </tbody>
             </table>
+        <h4 className="reset-link" onClick={() => resetLink()}>Reset Votes</h4>
     </div>
     )
 }

@@ -23,11 +23,12 @@ const Modal = ({ isShowing, hide, id, title, year, image, directors, stars, plot
             title={title}
             image={image}
             thumbsUpCount={thumbsUpCount}
-            thumbsDownCount={thumbsDownCount} />
+            thumbsDownCount={thumbsDownCount}
+            />
       </div>
     </div>
   </React.Fragment>, document.body
-  
+
 ) : null;
 
 export default Modal;
